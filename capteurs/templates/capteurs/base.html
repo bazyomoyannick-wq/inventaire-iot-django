@@ -35,7 +35,10 @@
   </style>
 </head>
 <body>
-  <header><a href="{% url 'capteurs:liste' %}">Inventaire des capteurs IdO</a></header>
+  <header style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+    <a href="{% url 'capteurs:liste' %}">Inventaire des capteurs IdO</a>
+    <a href="{% url 'capteur-list' %}" style="font-weight:400">API REST</a>
+  </header>
   <main>
     {% block contenu %}{% endblock %}
   </main>
