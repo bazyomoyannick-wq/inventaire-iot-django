@@ -1,0 +1,32 @@
+[
+  {
+    "model": "capteurs.capteur",
+    "fields": {
+      "nom": "Temp-Serre",
+      "type_capteur": "T",
+      "emplacement": "Serre A",
+      "actif": true,
+      "description": "Surveillance de la serre"
+    }
+  },
+  {
+    "model": "capteurs.capteur",
+    "fields": {
+      "nom": "Hum-Atelier",
+      "type_capteur": "H",
+      "emplacement": "Atelier",
+      "actif": true,
+      "description": "Contrôle de l’humidité"
+    }
+  },
+  {
+    "model": "capteurs.capteur",
+    "fields": {
+      "nom": "Press-Salle",
+      "type_capteur": "P",
+      "emplacement": "Salle N362",
+      "actif": false,
+      "description": "Capteur retiré temporairement"
+    }
+  }
+]

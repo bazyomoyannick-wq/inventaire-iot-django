@@ -1,0 +1,31 @@
+{% extends "capteurs/base.html" %}
+
+{% block titre %}{{ titre }}{% endblock %}
+
+{% block contenu %}
+<div class="carte">
+  <h1>{{ titre }}</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    {% for champ in form %}
+      <div class="champ">
+        {{ champ.label_tag }}
+        {{ champ }}
+        {{ champ.errors }}
+      </div>
+    {% endfor %}
+
+    <div class="actions">
+      <button type="submit" class="bouton">Enregistrer</button>
+      {% if capteur %}
+        <a href="{% url 'capteurs:detail' capteur.pk %}" class="bouton secondaire">Annuler</a>
+      {% else %}
+        <a href="{% url 'capteurs:liste' %}" class="bouton secondaire">Annuler</a>
+      {% endif %}
+    </div>
+  </form>
+</div>
+{% endblock %}

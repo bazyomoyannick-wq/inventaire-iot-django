@@ -1,0 +1,22 @@
+{% extends "capteurs/base.html" %}
+
+{% block titre %}Supprimer {{ capteur.nom }}{% endblock %}
+
+{% block contenu %}
+<div class="carte">
+  <h1>Supprimer le capteur {{ capteur.nom }} ?</h1>
+
+  <p class="avertissement">
+    La fiche <strong>{{ capteur.nom }}</strong> ({{ capteur.get_type_capteur_display }}, {{ capteur.emplacement }})
+    sera retirée définitivement de l’inventaire. Cette action est irréversible.
+  </p>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="actions">
+      <button type="submit" class="bouton danger">Confirmer la suppression</button>
+      <a href="{% url 'capteurs:detail' capteur.pk %}" class="bouton secondaire">Annuler</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

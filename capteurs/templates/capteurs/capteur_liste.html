@@ -1,0 +1,51 @@
+{% extends "capteurs/base.html" %}
+
+{% block titre %}Capteurs{% endblock %}
+
+{% block contenu %}
+<div class="carte">
+  <h1>Capteurs</h1>
+
+  <form method="get" action="{% url 'capteurs:liste' %}" class="recherche">
+    {{ form.non_field_errors }}
+    <div class="champ">
+      {{ form.q.label_tag }}
+      {{ form.q }}
+      {{ form.q.errors }}
+    </div>
+    <div class="champ">
+      {{ form.actifs_seulement }} {{ form.actifs_seulement.label_tag }}
+      {{ form.actifs_seulement.errors }}
+    </div>
+    <button type="submit" class="bouton">Rechercher</button>
+    <a href="{% url 'capteurs:liste' %}" class="bouton secondaire">Réinitialiser</a>
+  </form>
+</div>
+
+<div class="carte">
+  {% if capteurs %}
+    <table>
+      <thead>
+        <tr><th>Nom</th><th>Type</th><th>Actif</th></tr>
+      </thead>
+      <tbody>
+        {% for capteur in capteurs %}
+          <tr>
+            <td><a href="{% url 'capteurs:detail' capteur.pk %}">{{ capteur.nom }}</a></td>
+            <td>{{ capteur.get_type_capteur_display }}</td>
+            <td>{{ capteur.actif|yesno:"Oui,Non" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% elif recherche_active %}
+    <p class="vide">Aucun capteur ne correspond à la recherche.</p>
+  {% else %}
+    <p class="vide">Aucun capteur dans l’inventaire pour le moment.</p>
+  {% endif %}
+
+  <div class="actions">
+    <a href="{% url 'capteurs:ajouter' %}" class="bouton">Ajouter un capteur</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "capteurs/base.html" %}
+
+{% block titre %}{{ capteur.nom }}{% endblock %}
+
+{% block contenu %}
+<div class="carte">
+  <h1>{{ capteur.nom }}</h1>
+  <dl>
+    <dt>Nom</dt><dd>{{ capteur.nom }}</dd>
+    <dt>Type</dt><dd>{{ capteur.get_type_capteur_display }}</dd>
+    <dt>Emplacement</dt><dd>{{ capteur.emplacement }}</dd>
+    <dt>Actif</dt><dd>{{ capteur.actif|yesno:"Oui,Non" }}</dd>
+    <dt>Description</dt><dd>{{ capteur.description|default:"—" }}</dd>
+  </dl>
+
+  <div class="actions">
+    <a href="{% url 'capteurs:modifier' capteur.pk %}" class="bouton">Modifier</a>
+    <a href="{% url 'capteurs:supprimer' capteur.pk %}" class="bouton danger">Supprimer</a>
+    <a href="{% url 'capteurs:liste' %}" class="bouton secondaire">Retour à la liste</a>
+  </div>
+</div>
+{% endblock %}

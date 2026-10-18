@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titre %}Inventaire IdO{% endblock %} · Inventaire IdO</title>
+  <style>
+    :root { --fond:#f6f7f5; --carte:#fff; --texte:#1f2a24; --doux:#5d6b63; --accent:#2f6f4f; --danger:#b3261e; --bord:#d9ded9; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background:var(--fond); color:var(--texte); line-height:1.5; }
+    header { background:var(--accent); color:#fff; padding:.8rem 1.5rem; }
+    header a { color:#fff; text-decoration:none; font-weight:600; }
+    main { max-width:860px; margin:1.5rem auto; padding:0 1rem; }
+    .carte { background:var(--carte); border:1px solid var(--bord); border-radius:8px; padding:1.2rem 1.4rem; margin-bottom:1.2rem; }
+    h1 { font-size:1.5rem; margin-top:0; }
+    table { width:100%; border-collapse:collapse; }
+    th, td { text-align:left; padding:.5rem; border-bottom:1px solid var(--bord); }
+    th { color:var(--doux); font-weight:600; font-size:.9rem; }
+    a { color:var(--accent); }
+    .bouton { display:inline-block; padding:.45rem .9rem; border-radius:6px; border:1px solid var(--accent); background:var(--accent); color:#fff; text-decoration:none; font-size:.95rem; cursor:pointer; }
+    .bouton.secondaire { background:#fff; color:var(--accent); }
+    .bouton.danger { background:var(--danger); border-color:var(--danger); }
+    .actions { display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem; }
+    .vide { color:var(--doux); font-style:italic; }
+    .errorlist { color:var(--danger); margin:.2rem 0; padding-left:1.1rem; }
+    .champ { margin-bottom:.9rem; }
+    .champ label { display:block; font-weight:600; margin-bottom:.2rem; }
+    .champ input[type=text], .champ select, .champ textarea { width:100%; padding:.4rem; border:1px solid var(--bord); border-radius:5px; font:inherit; }
+    .recherche { display:flex; gap:1rem; align-items:flex-end; flex-wrap:wrap; }
+    .recherche .champ { margin-bottom:0; }
+    .avertissement { border-left:4px solid var(--danger); padding:.6rem .9rem; background:#fdf1f0; }
+    dl { display:grid; grid-template-columns:max-content 1fr; gap:.4rem 1.2rem; }
+    dt { font-weight:600; color:var(--doux); }
+    dd { margin:0; }
+  </style>
+</head>
+<body>
+  <header><a href="{% url 'capteurs:liste' %}">Inventaire des capteurs IdO</a></header>
+  <main>
+    {% block contenu %}{% endblock %}
+  </main>
+</body>
+</html>
