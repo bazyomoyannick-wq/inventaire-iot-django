@@ -4,7 +4,13 @@
 
 {% block contenu %}
 <div class="carte">
-  <h1>Capteurs</h1>
+  <div class="titre-format">
+    <h1>Capteurs</h1>
+    <div class="format">
+      <a href="{% url 'capteurs:liste' %}{% if request.GET %}?{{ request.GET.urlencode }}{% endif %}" class="actif">HTML</a>
+      <a href="{% url 'capteur-list' %}?format=json{% if request.GET %}&amp;{{ request.GET.urlencode }}{% endif %}" target="_blank">JSON</a>
+    </div>
+  </div>
 
   <form method="get" action="{% url 'capteurs:liste' %}" class="recherche">
     {{ form.non_field_errors }}

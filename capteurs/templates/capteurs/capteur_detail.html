@@ -4,7 +4,13 @@
 
 {% block contenu %}
 <div class="carte">
-  <h1>{{ capteur.nom }}</h1>
+  <div class="titre-format">
+    <h1>{{ capteur.nom }}</h1>
+    <div class="format">
+      <a href="{% url 'capteurs:detail' capteur.pk %}" class="actif">HTML</a>
+      <a href="{% url 'capteur-detail' capteur.pk %}?format=json" target="_blank">JSON</a>
+    </div>
+  </div>
   <dl>
     <dt>Nom</dt><dd>{{ capteur.nom }}</dd>
     <dt>Type</dt><dd>{{ capteur.get_type_capteur_display }}</dd>
