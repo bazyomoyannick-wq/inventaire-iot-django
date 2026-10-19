@@ -4,8 +4,18 @@ from .models import Capteur
 from .serializers import CapteurSerializer
 
 
-class CapteurViewSet(viewsets.ModelViewSet):
-    """API REST : liste, detail, creation, modification, suppression."""
+class CapteurViewSet(viewsets.ReadOnlyModelViewSet):
+    """API REST en lecture seule (GET uniquement).
+
+      GET /api/capteurs/        -> list      (équivalent de capteur_liste)
+      GET /api/capteurs/<pk>/   -> retrieve  (équivalent de capteur_detail)
+
+    POST, PUT, PATCH et DELETE ne sont pas fournis : DRF répond 405.
+
+    Filtres facultatifs, mêmes règles que le formulaire de recherche :
+      ?q=Serre            nom contient « Serre »
+      ?actifs_seulement=1 seulement les capteurs actifs
+    """
 
     serializer_class = CapteurSerializer
 
